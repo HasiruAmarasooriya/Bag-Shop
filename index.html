@@ -1,0 +1,2820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasi Fashion - Style You Carry Everywhere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #f5f5f0; /* soft beige */
+            --secondary-color: #d4af37; /* warm gold */
+            --accent-color: #000000; /* black */
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+            width: 250px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-icons a {
+            color: var(--text-color);
+            font-size: 18px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .header-icons a:hover {
+            color: var(--secondary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--accent-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--accent-color);
+        }
+
+        /* Featured Products */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 3px;
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .product-action-btn {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .product-action-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .product-old-price {
+            text-decoration: line-through;
+            color: var(--light-text);
+            font-size: 14px;
+            margin-left: 10px;
+            font-weight: 400;
+        }
+
+        /* Promotional Banner */
+        .promo-banner {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 40px 0;
+            margin: 60px 0;
+        }
+
+        .promo-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promo-text h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .promo-text p {
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+
+        .about-img {
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 15px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: white;
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Product Detail Page */
+        .product-detail {
+            padding: 80px 0;
+        }
+
+        .product-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-image {
+            height: 500px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-detail {
+            padding: 20px 0;
+        }
+
+        .product-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+
+        .product-price-detail {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 30px;
+            color: var(--light-text);
+        }
+
+        .product-options {
+            margin-bottom: 30px;
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .quantity-selector button {
+            width: 40px;
+            height: 40px;
+            background-color: var(--border-color);
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .quantity-selector input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-left: none;
+            border-right: none;
+            outline: none;
+        }
+
+        .product-actions-detail {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .product-actions-detail .btn {
+            padding: 15px 30px;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light-text);
+        }
+
+        .meta-item i {
+            color: var(--secondary-color);
+        }
+
+        /* Tabs */
+        .product-tabs {
+            margin-top: 50px;
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--secondary-color);
+        }
+
+        .tab-btn.active:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .tab-content {
+            padding: 30px 0;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        /* Reviews */
+        .reviews-list {
+            margin-top: 20px;
+        }
+
+        .review-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .reviewer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .review-rating {
+            color: var(--secondary-color);
+        }
+
+        .review-text {
+            color: var(--light-text);
+            margin-bottom: 15px;
+        }
+
+        /* Related Products */
+        .related-products {
+            margin-top: 80px;
+        }
+
+        /* Shop Page */
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .shop-results {
+            color: var(--light-text);
+        }
+
+        .shop-sorting {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .shop-sorting select {
+            padding: 8px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .shop-layout {
+            display: flex;
+            gap: 30px;
+        }
+
+        .shop-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .filter-widget {
+            margin-bottom: 30px;
+        }
+
+        .filter-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-list li {
+            margin-bottom: 10px;
+        }
+
+        .filter-list li label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .filter-list li input {
+            margin-right: 10px;
+        }
+
+        .price-range {
+            margin-top: 15px;
+        }
+
+        .price-range input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .price-values {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .shop-products {
+            flex: 1;
+        }
+
+        /* About Page */
+        .about-page {
+            padding: 80px 0;
+        }
+
+        .about-hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+            font-size: 18px;
+        }
+
+        .about-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+            align-items: center;
+        }
+
+        .about-story-img {
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .about-story-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-story-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-story-text p {
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+
+        .mission-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary-color);
+            font-size: 28px;
+        }
+
+        .value-card h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: var(--light-text);
+        }
+
+        .craftsmanship {
+            margin-bottom: 80px;
+        }
+
+        .craftsmanship-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .craftsmanship-img {
+            border-radius: 5px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .craftsmanship-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .craftsmanship-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Page */
+        .contact-page {
+            padding: 80px 0;
+        }
+
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .contact-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+            font-size: 18px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .contact-info {
+            background-color: white;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--secondary-color);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .info-text p {
+            color: var(--light-text);
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary-color);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-map {
+            height: 400px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Cart Page */
+        .cart-page {
+            padding: 80px 0;
+        }
+
+        .cart-page h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .cart-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .cart-items {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .cart-item {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-price {
+            font-size: 16px;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .cart-item-options {
+            color: var(--light-text);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-selector-cart {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-selector-cart button {
+            width: 30px;
+            height: 30px;
+            background-color: var(--border-color);
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .quantity-selector-cart input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-left: none;
+            border-right: none;
+            outline: none;
+        }
+
+        .cart-item-remove {
+            color: var(--light-text);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cart-item-remove:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-summary {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .cart-summary h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .summary-row.total {
+            font-size: 18px;
+            font-weight: 700;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .summary-row.total .summary-value {
+            color: var(--secondary-color);
+        }
+
+        .cart-actions {
+            margin-top: 30px;
+        }
+
+        .cart-actions .btn {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Checkout Page */
+        .checkout-page {
+            padding: 80px 0;
+        }
+
+        .checkout-page h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .checkout-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .checkout-form {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+        }
+
+        .checkout-section {
+            margin-bottom: 40px;
+        }
+
+        .checkout-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .checkout-order {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .order-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .order-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .order-item-details {
+            font-size: 12px;
+            color: var(--light-text);
+            margin-bottom: 5px;
+        }
+
+        .order-item-price {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-methods h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .payment-option {
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-option:hover,
+        .payment-option.selected {
+            border-color: var(--secondary-color);
+        }
+
+        .payment-option i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .payment-option span {
+            display: block;
+            font-size: 14px;
+        }
+
+        /* Newsletter Popup */
+        .newsletter-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            z-index: 1000;
+            transform: translateY(150%);
+            transition: transform 0.5s ease;
+        }
+
+        .newsletter-popup.show {
+            transform: translateY(0);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        .newsletter-popup h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-popup p {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .newsletter-popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .newsletter-popup-form input {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .newsletter-popup-form button {
+            padding: 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-popup-form button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Page Navigation */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .product-detail-content,
+            .about-content,
+            .about-story,
+            .contact-content,
+            .cart-content,
+            .checkout-content {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-layout {
+                flex-direction: column;
+            }
+
+            .shop-sidebar {
+                width: 100%;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-wrap: wrap;
+            }
+
+            .search-bar {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--accent-color);
+                flex-direction: column;
+                transition: right 0.3s ease;
+                z-index: 1001;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .promo-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .promo-content .btn {
+                margin-top: 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+
+            .newsletter-popup {
+                width: calc(100% - 40px);
+                right: 20px;
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .product-img {
+                height: 200px;
+            }
+
+            .mission-values {
+                grid-template-columns: 1fr;
+            }
+
+            .craftsmanship-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="#" class="logo" onclick="showPage('home')">HASI <span>FASHION</span></a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products...">
+                    <button type="button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-actions">
+                    <div class="header-icons">
+                        <a href="#"><i class="far fa-user"></i></a>
+                        <a href="#"><i class="far fa-heart"></i></a>
+                        <a href="#" onclick="showPage('cart')">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count">3</span>
+                        </a>
+                    </div>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Style You Carry Everywhere</h1>
+                <p>Discover our collection of elegant and trendy bags designed for the modern lifestyle.</p>
+                <div>
+                    <a href="#" class="btn" onclick="showPage('shop')">Shop Now</a>
+                    <a href="#" class="btn btn-outline">New Arrivals</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Products</h2>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                            <span class="product-badge">New</span>
+                            <div class="product-actions">
+                                <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Elegant Leather Tote</h3>
+                            <div class="product-price">$149.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                            <span class="product-badge">Sale</span>
+                            <div class="product-actions">
+                                <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Classic Crossbody Bag</h3>
+                            <div class="product-price">$89.99 <span class="product-old-price">$119.99</span></div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1590854278957-7b6785dbe1b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                            <div class="product-actions">
+                                <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Luxury Clutch Purse</h3>
+                            <div class="product-price">$79.99</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                            <div class="product-actions">
+                                <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Designer Backpack</h3>
+                            <div class="product-price">$129.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="promo-banner">
+            <div class="container">
+                <div class="promo-content">
+                    <div class="promo-text">
+                        <h3>Summer Collection</h3>
+                        <p>Get 20% off on all new arrivals. Limited time offer!</p>
+                    </div>
+                    <a href="#" class="btn" onclick="showPage('shop')">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>About Hasi Fashion</h3>
+                        <p>Hasi Fashion is a luxury bag brand that combines elegance, functionality, and quality craftsmanship. Founded in 2010, we have been dedicated to creating bags that not only complement your style but also stand the test of time.</p>
+                        <p>Our bags are designed for the modern individual who values both aesthetics and practicality. Each piece is carefully crafted using premium materials and attention to detail.</p>
+                        <a href="#" class="btn" onclick="showPage('about')">Read More</a>
+                    </div>
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1525506114042-4a90a062b3c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="About Us">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Shop Page -->
+    <div id="shop" class="page">
+        <section class="section">
+            <div class="container">
+                <div class="shop-header">
+                    <div class="shop-results">Showing 12 of 48 results</div>
+                    <div class="shop-sorting">
+                        <span>Sort by:</span>
+                        <select>
+                            <option>Popularity</option>
+                            <option>Newest First</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                        <div class="header-icons">
+                            <a href="#"><i class="fas fa-th"></i></a>
+                            <a href="#"><i class="fas fa-list"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-layout">
+                    <div class="shop-sidebar">
+                        <div class="filter-widget">
+                            <h4 class="filter-title">Categories</h4>
+                            <ul class="filter-list">
+                                <li><label><input type="checkbox"> Tote Bags (12)</label></li>
+                                <li><label><input type="checkbox"> Crossbody Bags (8)</label></li>
+                                <li><label><input type="checkbox"> Clutches (6)</label></li>
+                                <li><label><input type="checkbox"> Backpacks (5)</label></li>
+                                <li><label><input type="checkbox"> Wallets (7)</label></li>
+                            </ul>
+                        </div>
+                        <div class="filter-widget">
+                            <h4 class="filter-title">Color</h4>
+                            <ul class="filter-list">
+                                <li><label><input type="checkbox"> Black (15)</label></li>
+                                <li><label><input type="checkbox"> Brown (10)</label></li>
+                                <li><label><input type="checkbox"> Beige (8)</label></li>
+                                <li><label><input type="checkbox"> Blue (6)</label></li>
+                                <li><label><input type="checkbox"> Red (4)</label></li>
+                            </ul>
+                        </div>
+                        <div class="filter-widget">
+                            <h4 class="filter-title">Price Range</h4>
+                            <div class="price-range">
+                                <input type="range" min="0" max="300" value="150">
+                                <div class="price-values">
+                                    <span>$0</span>
+                                    <span>$300</span>
+                                </div>
+                                <button class="btn">Filter</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-products">
+                        <div class="products-grid">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                    <span class="product-badge">Sale</span>
+                                    <div class="product-actions">
+                                        <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Classic Crossbody Bag</h3>
+                                    <div class="product-price">$89.99 <span class="product-old-price">$119.99</span></div>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                    <span class="product-badge">New</span>
+                                    <div class="product-actions">
+                                        <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Elegant Leather Tote</h3>
+                                    <div class="product-price">$149.99</div>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1590854278957-7b6785dbe1b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                    <div class="product-actions">
+                                        <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Luxury Clutch Purse</h3>
+                                    <div class="product-price">$79.99</div>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                    <div class="product-actions">
+                                        <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Designer Backpack</h3>
+                                    <div class="product-price">$129.99</div>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1566155018536-0a8a20e8572c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                    <span class="product-badge">Hot</span>
+                                    <div class="product-actions">
+                                        <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Minimalist Wallet</h3>
+                                    <div class="product-price">$49.99</div>
+                                </div>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                    <div class="product-actions">
+                                        <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                        <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-name">Casual Shoulder Bag</h3>
+                                    <div class="product-price">$99.99</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination" style="margin-top: 50px; text-align: center;">
+                            <a href="#" class="btn btn-secondary">Load More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Product Detail Page -->
+    <div id="product-detail" class="page">
+        <section class="product-detail">
+            <div class="container">
+                <div class="product-detail-content">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product" id="mainProductImage">
+                        </div>
+                        <div class="thumbnail-images">
+                            <div class="thumbnail active" onclick="changeImage('https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', this)">
+                                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', this)">
+                                <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1595760780346-f972ffb209de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', this)">
+                                <img src="https://images.unsplash.com/photo-1595760780346-f972ffb209de?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="thumbnail" onclick="changeImage('https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', this)">
+                                <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info-detail">
+                        <h2 class="product-title">Elegant Leather Tote</h2>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span>(24 Reviews)</span>
+                        </div>
+                        <div class="product-price-detail">$149.99</div>
+                        <div class="product-description">
+                            <p>Our Elegant Leather Tote is crafted from premium genuine leather, designed to be both stylish and functional. With its spacious interior and multiple compartments, it's perfect for everyday use or special occasions.</p>
+                        </div>
+                        <div class="product-options">
+                            <div class="option-title">Color</div>
+                            <div class="color-options">
+                                <div class="color-option" style="background-color: #000000;"></div>
+                                <div class="color-option" style="background-color: #8B4513;"></div>
+                                <div class="color-option" style="background-color: #D2B48C;"></div>
+                                <div class="color-option" style="background-color: #A52A2A;"></div>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button type="button" onclick="decreaseQuantity()">-</button>
+                            <input type="text" id="quantity" value="1" readonly>
+                            <button type="button" onclick="increaseQuantity()">+</button>
+                        </div>
+                        <div class="product-actions-detail">
+                            <button class="btn">Add to Cart</button>
+                            <button class="btn btn-secondary"><i class="far fa-heart"></i> Wishlist</button>
+                        </div>
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-truck"></i>
+                                <span>Free Shipping</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>2 Year Warranty</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-undo"></i>
+                                <span>30 Days Return</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="openTab(event, 'description')">Description</button>
+                        <button class="tab-btn" onclick="openTab(event, 'reviews')">Reviews (24)</button>
+                        <button class="tab-btn" onclick="openTab(event, 'shipping')">Shipping & Returns</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="description" class="tab-pane active">
+                            <h3>Product Description</h3>
+                            <p>Our Elegant Leather Tote is the perfect blend of style and functionality. Crafted from premium genuine leather, this tote bag features a spacious interior with multiple compartments to keep your belongings organized.</p>
+                            <p>The bag includes a main compartment with a zip closure, an interior zip pocket, and two slip pockets. The adjustable shoulder straps ensure comfortable carrying throughout the day.</p>
+                            <p>Dimensions: 14" L x 11" H x 5" W</p>
+                            <p>Material: 100% Genuine Leather</p>
+                        </div>
+                        <div id="reviews" class="tab-pane">
+                            <h3>Customer Reviews</h3>
+                            <div class="reviews-list">
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-avatar">
+                                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer">
+                                            </div>
+                                            <div>
+                                                <div class="reviewer-name">Sarah Johnson</div>
+                                                <div class="review-date">May 15, 2023</div>
+                                            </div>
+                                        </div>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="review-text">
+                                        <p>I absolutely love this tote bag! The leather quality is exceptional and it's the perfect size for everyday use. I've received so many compliments on it.</p>
+                                    </div>
+                                </div>
+                                <div class="review-item">
+                                    <div class="review-header">
+                                        <div class="reviewer-info">
+                                            <div class="reviewer-avatar">
+                                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reviewer">
+                                            </div>
+                                            <div>
+                                                <div class="reviewer-name">Michael Chen</div>
+                                                <div class="review-date">April 28, 2023</div>
+                                            </div>
+                                        </div>
+                                        <div class="review-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="review-text">
+                                        <p>Great bag overall. The leather is soft and the design is elegant. My only complaint is that it's a bit heavy when fully loaded, but that's to be expected with genuine leather.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn" style="margin-top: 20px;">Write a Review</button>
+                        </div>
+                        <div id="shipping" class="tab-pane">
+                            <h3>Shipping & Returns</h3>
+                            <h4>Shipping</h4>
+                            <p>We offer free standard shipping on all orders over $50. Standard shipping takes 3-5 business days. Express shipping options are available at checkout for an additional fee.</p>
+                            <h4>Returns</h4>
+                            <p>We accept returns within 30 days of purchase. Items must be unused and in their original packaging with all tags attached. Return shipping costs are the responsibility of the customer unless the return is due to a defect or error on our part.</p>
+                            <h4>Warranty</h4>
+                            <p>All our products come with a 2-year warranty against manufacturing defects. This warranty does not cover damage caused by accidents, improper care, or normal wear and tear.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="related-products">
+                    <div class="section-title">
+                        <h2>Related Products</h2>
+                    </div>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                <div class="product-actions">
+                                    <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Classic Crossbody Bag</h3>
+                                <div class="product-price">$89.99</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1590854278957-7b6785dbe1b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                <div class="product-actions">
+                                    <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Luxury Clutch Purse</h3>
+                                <div class="product-price">$79.99</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                <div class="product-actions">
+                                    <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Designer Backpack</h3>
+                                <div class="product-price">$129.99</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="https://images.unsplash.com/photo-1566155018536-0a8a20e8572c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Product">
+                                <div class="product-actions">
+                                    <div class="product-action-btn"><i class="far fa-heart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-shopping-cart"></i></div>
+                                    <div class="product-action-btn"><i class="fas fa-eye"></i></div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Minimalist Wallet</h3>
+                                <div class="product-price">$49.99</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="about-page">
+            <div class="container">
+                <div class="about-hero">
+                    <h1>About Hasi Fashion</h1>
+                    <p>Discover our story, mission, and the craftsmanship behind our luxury bags</p>
+                </div>
+
+                <div class="about-story">
+                    <div class="about-story-img">
+                        <img src="https://images.unsplash.com/photo-1525506114042-4a90a062b3c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Our Story">
+                    </div>
+                    <div class="about-story-text">
+                        <h3>Our Story</h3>
+                        <p>Hasi Fashion was founded in 2010 with a simple vision: to create elegant, high-quality bags that combine style with functionality. Our founder, Sarah Hasi, was inspired by her travels around the world and the diverse cultures she encountered.</p>
+                        <p>What started as a small boutique in downtown New York has now grown into an internationally recognized brand, known for our commitment to quality, craftsmanship, and timeless design.</p>
+                        <p>Today, Hasi Fashion continues to create bags that are not just accessories, but statements of personal style and expressions of individuality.</p>
+                    </div>
+                </div>
+
+                <div class="mission-values">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Quality Craftsmanship</h4>
+                        <p>We are committed to using only the finest materials and employing skilled artisans who take pride in their work.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Sustainability</h4>
+                        <p>We strive to minimize our environmental impact through responsible sourcing and sustainable production practices.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Customer Satisfaction</h4>
+                        <p>Our customers are at the heart of everything we do. We are dedicated to providing exceptional service and products that exceed expectations.</p>
+                    </div>
+                </div>
+
+                <div class="craftsmanship">
+                    <div class="section-title">
+                        <h2>Craftsmanship</h2>
+                    </div>
+                    <div class="craftsmanship-gallery">
+                        <div class="craftsmanship-img">
+                            <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Craftsmanship">
+                        </div>
+                        <div class="craftsmanship-img">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Craftsmanship">
+                        </div>
+                        <div class="craftsmanship-img">
+                            <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Craftsmanship">
+                        </div>
+                        <div class="craftsmanship-img">
+                            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Craftsmanship">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="contact-page">
+            <div class="container">
+                <div class="contact-hero">
+                    <h1>Contact Us</h1>
+                    <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Address</h4>
+                                <p>123 Fashion Avenue<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Email</h4>
+                                <p>info@hasifashion.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-text">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9am - 8pm<br>Saturday: 10am - 6pm<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-pinterest"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878459418!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sus!4v1635947384227!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Page -->
+    <div id="cart" class="page">
+        <section class="cart-page">
+            <div class="container">
+                <h1>Shopping Cart</h1>
+                <div class="cart-content">
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="cart-item-info">
+                                <h3 class="cart-item-name">Elegant Leather Tote</h3>
+                                <div class="cart-item-price">$149.99</div>
+                                <div class="cart-item-options">Color: Black</div>
+                                <div class="cart-item-actions">
+                                    <div class="quantity-selector-cart">
+                                        <button type="button">-</button>
+                                        <input type="text" value="1" readonly>
+                                        <button type="button">+</button>
+                                    </div>
+                                    <div class="cart-item-remove">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="cart-item-info">
+                                <h3 class="cart-item-name">Classic Crossbody Bag</h3>
+                                <div class="cart-item-price">$89.99</div>
+                                <div class="cart-item-options">Color: Brown</div>
+                                <div class="cart-item-actions">
+                                    <div class="quantity-selector-cart">
+                                        <button type="button">-</button>
+                                        <input type="text" value="1" readonly>
+                                        <button type="button">+</button>
+                                    </div>
+                                    <div class="cart-item-remove">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <div class="cart-item-img">
+                                <img src="https://images.unsplash.com/photo-1566155018536-0a8a20e8572c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="cart-item-info">
+                                <h3 class="cart-item-name">Minimalist Wallet</h3>
+                                <div class="cart-item-price">$49.99</div>
+                                <div class="cart-item-options">Color: Black</div>
+                                <div class="cart-item-actions">
+                                    <div class="quantity-selector-cart">
+                                        <button type="button">-</button>
+                                        <input type="text" value="1" readonly>
+                                        <button type="button">+</button>
+                                    </div>
+                                    <div class="cart-item-remove">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span class="summary-value">$289.97</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="summary-value">$10.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span class="summary-value">$24.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span class="summary-value">$323.97</span>
+                        </div>
+                        <div class="cart-actions">
+                            <button class="btn" onclick="showPage('checkout')">Proceed to Checkout</button>
+                            <button class="btn btn-secondary" onclick="showPage('shop')">Continue Shopping</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Checkout Page -->
+    <div id="checkout" class="page">
+        <section class="checkout-page">
+            <div class="container">
+                <h1>Checkout</h1>
+                <div class="checkout-content">
+                    <div class="checkout-form">
+                        <div class="checkout-section">
+                            <h3>Billing Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Street Address</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode">ZIP Code</label>
+                                    <input type="text" id="zipCode" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                        </div>
+                        <div class="checkout-section">
+                            <h3>Payment Method</h3>
+                            <div class="payment-methods">
+                                <h4>Select Payment Method</h4>
+                                <div class="payment-options">
+                                    <div class="payment-option selected">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <span>Credit Card</span>
+                                    </div>
+                                    <div class="payment-option">
+                                        <i class="fab fa-paypal"></i>
+                                        <span>PayPal</span>
+                                    </div>
+                                    <div class="payment-option">
+                                        <i class="fab fa-apple-pay"></i>
+                                        <span>Apple Pay</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiryDate">Expiry Date</label>
+                                    <input type="text" id="expiryDate" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-section">
+                            <h3>Shipping Method</h3>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="shipping" checked> Standard Shipping (5-7 business days) - $10.00
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="shipping"> Express Shipping (2-3 business days) - $25.00
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="shipping"> Overnight Shipping (1 business day) - $40.00
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Place Order</button>
+                    </div>
+                    <div class="checkout-order">
+                        <h3>Your Order</h3>
+                        <div class="order-item">
+                            <div class="order-item-img">
+                                <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="order-item-info">
+                                <div class="order-item-name">Elegant Leather Tote</div>
+                                <div class="order-item-details">Color: Black | Qty: 1</div>
+                                <div class="order-item-price">$149.99</div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-item-img">
+                                <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="order-item-info">
+                                <div class="order-item-name">Classic Crossbody Bag</div>
+                                <div class="order-item-details">Color: Brown | Qty: 1</div>
+                                <div class="order-item-price">$89.99</div>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-item-img">
+                                <img src="https://images.unsplash.com/photo-1566155018536-0a8a20e8572c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Product">
+                            </div>
+                            <div class="order-item-info">
+                                <div class="order-item-name">Minimalist Wallet</div>
+                                <div class="order-item-details">Color: Black | Qty: 1</div>
+                                <div class="order-item-price">$49.99</div>
+                            </div>
+                        </div>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span class="summary-value">$289.97</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="summary-value">$10.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span class="summary-value">$24.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span class="summary-value">$323.97</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Be the first to know about new collections and exclusive offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>About Hasi Fashion</h4>
+                    <p>Hasi Fashion is a luxury bag brand that combines elegance, functionality, and quality craftsmanship to create timeless pieces for the modern individual.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+                        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Avenue, New York, NY 10001</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@hasifashion.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-8pm, Sat: 10am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Hasi Fashion. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Newsletter Popup -->
+    <div class="newsletter-popup" id="newsletterPopup">
+        <button class="popup-close" onclick="closeNewsletterPopup()">&times;</button>
+        <h3>Subscribe to Our Newsletter</h3>
+        <p>Get 10% off your first order when you subscribe to our newsletter.</p>
+        <form class="newsletter-popup-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Close mobile menu if open
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Product Detail Image Change
+        function changeImage(src, thumbnail) {
+            document.getElementById('mainProductImage').src = src;
+            
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+        }
+
+        // Quantity Selector
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+
+        // Tab Functionality
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabPanes.forEach(pane => {
+                pane.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show the specific tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to the button that opened the tab
+            evt.currentTarget.classList.add('active');
+        }
+
+        // Newsletter Popup
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('newsletterPopup').classList.add('show');
+            }, 5000);
+        });
+
+        function closeNewsletterPopup() {
+            document.getElementById('newsletterPopup').classList.remove('show');
+        }
+
+        // Product Quick View
+        document.querySelectorAll('.product-action-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.querySelector('.fa-eye')) {
+                    e.preventDefault();
+                    showPage('product-detail');
+                }
+            });
+        });
+
+        // Add to Cart Animation
+        document.querySelectorAll('.product-action-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.querySelector('.fa-shopping-cart')) {
+                    e.preventDefault();
+                    
+                    // Update cart count
+                    const cartCount = document.querySelector('.cart-count');
+                    const currentCount = parseInt(cartCount.textContent);
+                    cartCount.textContent = currentCount + 1;
+                    
+                    // Show notification
+                    const notification = document.createElement('div');
+                    notification.style.position = 'fixed';
+                    notification.style.bottom = '20px';
+                    notification.style.left = '20px';
+                    notification.style.backgroundColor = 'var(--secondary-color)';
+                    notification.style.color = 'white';
+                    notification.style.padding = '15px 20px';
+                    notification.style.borderRadius = '5px';
+                    notification.style.boxShadow = 'var(--shadow)';
+                    notification.style.zIndex = '1000';
+                    notification.textContent = 'Product added to cart!';
+                    
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.style.opacity = '0';
+                        notification.style.transition = 'opacity 0.5s ease';
+                        setTimeout(() => {
+                            document.body.removeChild(notification);
+                        }, 500);
+                    }, 3000);
+                }
+            });
+        });
+
+        // Form Submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.style.position = 'fixed';
+                successMessage.style.top = '50%';
+                successMessage.style.left = '50%';
+                successMessage.style.transform = 'translate(-50%, -50%)';
+                successMessage.style.backgroundColor = 'white';
+                successMessage.style.padding = '30px';
+                successMessage.style.borderRadius = '5px';
+                successMessage.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                successMessage.style.zIndex = '1000';
+                successMessage.style.textAlign = 'center';
+                successMessage.innerHTML = '<h3 style="margin-bottom: 15px;">Success!</h3><p>Your message has been sent successfully.</p>';
+                
+                document.body.appendChild(successMessage);
+                
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    successMessage.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(successMessage);
+                    }, 500);
+                }, 3000);
+                
+                // Reset form
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
