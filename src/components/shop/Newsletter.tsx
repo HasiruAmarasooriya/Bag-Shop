@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Mail } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { useMounted } from "@/hooks/useMounted";
 
 export default function Newsletter() {
+  const mounted = useMounted();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -14,37 +15,34 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-rose-900 to-rose-800">
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        <Mail className="w-10 h-10 text-rose-200 mx-auto mb-4" />
-        <h2 className="text-3xl font-serif font-bold text-white mb-3">
-          Join the Hasi Family
+    <section className="py-24 luxury-gradient relative overflow-hidden">
+      <div className="absolute inset-0 shimmer-gold opacity-30" />
+      <div className="relative max-w-2xl mx-auto px-4 text-center">
+        <p className="text-gold text-xs tracking-[0.4em] uppercase mb-4">Exclusive Access</p>
+        <h2 className="text-4xl font-serif font-light text-white mb-4">
+          Join the <span className="font-semibold gold-text">Hasi Circle</span>
         </h2>
-        <p className="text-rose-200 mb-8">
-          Subscribe for exclusive offers, new arrivals, and style inspiration.
+        <p className="text-white/50 mb-10 font-light">
+          Be the first to discover new collections, private sales, and style inspiration.
         </p>
 
         {submitted ? (
-          <p className="text-white text-lg font-medium">
-            Thank you for subscribing! 🎉
-          </p>
-        ) : (
+          <p className="text-gold text-lg font-serif">Welcome to the circle.</p>
+        ) : mounted ? (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder="Your email address"
               required
-              className="flex-1 px-5 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-rose-200 focus:outline-none focus:ring-2 focus:ring-white/30"
+              autoComplete="email"
+              className="flex-1 px-5 py-3.5 bg-white/5 border border-white/20 text-white placeholder:text-white/30 focus:outline-none focus:border-gold text-sm"
             />
-            <Button
-              type="submit"
-              className="bg-white text-rose-900 hover:bg-rose-50"
-            >
-              Subscribe
-            </Button>
+            <Button type="submit" variant="luxury">Subscribe</Button>
           </form>
+        ) : (
+          <div className="h-12 max-w-md mx-auto" aria-hidden />
         )}
       </div>
     </section>

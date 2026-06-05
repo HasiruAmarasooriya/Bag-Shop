@@ -339,12 +339,30 @@ export async function createCategory(data: {
   name: string;
   slug?: string;
   description?: string;
+  image?: string;
 }) {
   const db = getAdminDb();
   const slug = data.slug || slugify(data.name);
   const ref = await db.collection("categories").add({ ...data, slug });
   const snap = await ref.get();
   return serializeDoc(ref.id, snap.data()!);
+}
+
+export async function updateCategory(
+  id: string,
+  data: Partial<{ name: string; slug: string; description: string; image: string }>
+) {
+  const db = getAdminDb();
+  await db.collection("categories").doc(id).update(data);
+  const snap = await db.collection("categories").doc(id).get();
+  return serializeDoc(id, snap.data()!);
+}
+
+export async function getCategoryById(id: string) {
+  const db = getAdminDb();
+  const snap = await db.collection("categories").doc(id).get();
+  if (!snap.exists) return null;
+  return serializeDoc(id, snap.data()!);
 }
 
 export async function seedCategories(
@@ -381,4 +399,48 @@ export async function isDatabaseSeeded() {
   const db = getAdminDb();
   const snap = await db.collection("products").limit(1).get();
   return !snap.empty;
+}
+
+// ─── Gallery ─────────────────────────────────────────────────────────────────
+
+export async function getGalleryItems() {
+  const db = getAdminDb();
+  const snap = await db.collection("gallery").get();
+  const items = snap.docs.map((d) => serializeDoc(d.id, d.data()));
+  items.sort(
+    (a, b) =>
+      new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()
+  );
+  return items;
+}
+
+export async function createGalleryItem(data: {
+  title: string;
+  category: string;
+  image: string;
+  span?: string;
+}) {
+  const db = getAdminDb();
+  const ref = await db.collection("gallery").add({
+    ...data,
+    span: data.span || "normal",
+    createdAt: now(),
+  });
+  const snap = await ref.get();
+  return serializeDoc(ref.id, snap.data()!);
+}
+
+export async function updateGalleryItem(
+  id: string,
+  data: Partial<{ title: string; category: string; image: string; span: string }>
+) {
+  const db = getAdminDb();
+  await db.collection("gallery").doc(id).update(data);
+  const snap = await db.collection("gallery").doc(id).get();
+  return serializeDoc(id, snap.data()!);
+}
+
+export async function deleteGalleryItem(id: string) {
+  const db = getAdminDb();
+  await db.collection("gallery").doc(id).delete();
 }

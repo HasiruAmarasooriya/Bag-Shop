@@ -22,7 +22,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
       productId: product._id,
       name: product.name,
       price: product.price,
-      image: product.images[0] || "",
+      image: product.images.find((img) => img.startsWith("/")) || "",
       quantity,
       color,
       size,
@@ -43,7 +43,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
     <div className="space-y-4">
       {product.colors.length > 0 && (
         <div>
-          <label className="text-sm font-medium text-stone-700 mb-2 block">
+          <label className="text-sm font-medium text-foreground mb-2 block">
             Color
           </label>
           <div className="flex flex-wrap gap-2">
@@ -53,8 +53,8 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
                 onClick={() => setColor(c)}
                 className={`px-4 py-2 rounded-full text-sm border transition-colors ${
                   color === c
-                    ? "border-rose-900 bg-rose-50 text-rose-900"
-                    : "border-stone-200 text-stone-600 hover:border-stone-300"
+                    ? "border-accent bg-accent/10 text-accent"
+                    : "border-border text-muted hover:border-border"
                 }`}
               >
                 {c}
@@ -66,7 +66,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
 
       {product.sizes.length > 0 && (
         <div>
-          <label className="text-sm font-medium text-stone-700 mb-2 block">
+          <label className="text-sm font-medium text-foreground mb-2 block">
             Size
           </label>
           <div className="flex flex-wrap gap-2">
@@ -76,8 +76,8 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
                 onClick={() => setSize(s)}
                 className={`px-4 py-2 rounded-full text-sm border transition-colors ${
                   size === s
-                    ? "border-rose-900 bg-rose-50 text-rose-900"
-                    : "border-stone-200 text-stone-600 hover:border-stone-300"
+                    ? "border-accent bg-accent/10 text-accent"
+                    : "border-border text-muted hover:border-border"
                 }`}
               >
                 {s}
@@ -88,10 +88,10 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
       )}
 
       <div className="flex items-center gap-4">
-        <div className="flex items-center border border-stone-200 rounded-full">
+        <div className="flex items-center border border-border rounded-full">
           <button
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
-            className="px-4 py-2 text-stone-600 hover:text-rose-900"
+            className="px-4 py-2 text-muted hover:text-accent"
           >
             −
           </button>
@@ -100,7 +100,7 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
             onClick={() =>
               setQuantity(Math.min(product.stock, quantity + 1))
             }
-            className="px-4 py-2 text-stone-600 hover:text-rose-900"
+            className="px-4 py-2 text-muted hover:text-accent"
           >
             +
           </button>

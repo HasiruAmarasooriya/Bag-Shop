@@ -1,15 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-
-const categories = [
-  "All",
-  "Handbags",
-  "Tote Bags",
-  "Crossbody",
-  "Clutches",
-  "Backpacks",
-];
+import { CATEGORY_NAMES } from "@/lib/categories";
 
 export default function ShopFilters() {
   const router = useRouter();
@@ -28,9 +20,9 @@ export default function ShopFilters() {
     <aside className="lg:w-56 shrink-0">
       <div className="sticky top-28 space-y-6">
         <div>
-          <h3 className="font-semibold text-stone-900 mb-3">Categories</h3>
-          <ul className="space-y-1">
-            {categories.map((cat) => (
+          <h3 className="font-serif text-lg text-foreground mb-4">Categories</h3>
+          <ul className="space-y-0.5">
+            {["All", ...CATEGORY_NAMES].map((cat) => (
               <li key={cat}>
                 <button
                   onClick={() => {
@@ -42,11 +34,10 @@ export default function ShopFilters() {
                       updateParam("category", cat);
                     }
                   }}
-                  className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
-                    (cat === "All" && !currentCategory) ||
-                    currentCategory === cat
-                      ? "bg-rose-50 text-rose-900 font-medium"
-                      : "text-stone-600 hover:bg-stone-50"
+                  className={`block w-full text-left px-3 py-2 text-sm transition-colors ${
+                    (cat === "All" && !currentCategory) || currentCategory === cat
+                      ? "bg-foreground text-background"
+                      : "text-muted hover:bg-surface-muted hover:text-foreground"
                   }`}
                 >
                   {cat}
@@ -57,9 +48,9 @@ export default function ShopFilters() {
         </div>
 
         <div>
-          <h3 className="font-semibold text-stone-900 mb-3">Sort By</h3>
+          <h3 className="font-serif text-lg text-foreground mb-4">Sort By</h3>
           <select
-            className="w-full px-3 py-2 rounded-lg border border-stone-200 text-sm"
+            className="w-full px-3 py-2.5 border border-border bg-input-bg text-foreground text-sm focus:outline-none focus:border-gold"
             value={currentSort}
             onChange={(e) => updateParam("sort", e.target.value)}
           >

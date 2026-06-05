@@ -29,8 +29,8 @@ export default function AccountNav() {
             className={cn(
               "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors",
               isActive
-                ? "bg-rose-50 text-rose-900"
-                : "text-stone-600 hover:bg-stone-50"
+                ? "bg-accent/10 text-accent"
+                : "text-muted hover:bg-surface-muted"
             )}
           >
             <link.icon className="w-4 h-4" />

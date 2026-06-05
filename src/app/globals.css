@@ -1,61 +1,269 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Hasi Fashion brand palette (from logo) ───
+   Gold deep:  #8A6628
+   Gold mid:   #D4AF37
+   Gold light: #F9E498
+   Cream:      #FAF9F6
+   Black:      #000000
+─── */
+
+/* ─── Light theme — cream & classic gold ─── */
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
-  --rose-primary: #881337;
-  --rose-light: #fff1f2;
+  --background: #faf9f6;
+  --foreground: #1a1a1a;
+  --surface: #ffffff;
+  --surface-muted: #f3f1ec;
+  --surface-elevated: #ffffff;
+  --muted: #6b6560;
+  --border: #e5e0d6;
+  --gold: #d4af37;
+  --gold-light: #f9e498;
+  --gold-dark: #8a6628;
+  --accent: #8a6628;
+  --charcoal: #000000;
+  --topbar-bg: #000000;
+  --topbar-text: #d4af37;
+  --inverse-foreground: #ffffff;
+  --inverse-muted: rgba(255, 255, 255, 0.65);
+  --hero-overlay: rgba(0, 0, 0, 0.9);
+  --card-shadow: rgba(138, 102, 40, 0.12);
+  --input-bg: #ffffff;
+  --ring: rgba(212, 175, 55, 0.45);
+  --glow: rgba(212, 175, 55, 0.22);
+  --mesh-1: rgba(212, 175, 55, 0.06);
+  --mesh-2: rgba(250, 249, 246, 0.95);
+  --gold-gradient: linear-gradient(135deg, #8a6628 0%, #d4af37 45%, #f9e498 70%, #c5a028 100%);
+}
+
+/* ─── Dark theme — black & luminous gold ─── */
+.dark {
+  --background: #000000;
+  --foreground: #f5f5f5;
+  --surface: #0d0d0d;
+  --surface-muted: #141414;
+  --surface-elevated: #1a1a1a;
+  --muted: #a3a3a3;
+  --border: #2a2a2a;
+  --gold: #d4af37;
+  --gold-light: #f9e498;
+  --gold-dark: #8a6628;
+  --accent: #d4af37;
+  --charcoal: #000000;
+  --topbar-bg: #000000;
+  --topbar-text: #d4af37;
+  --inverse-foreground: #ffffff;
+  --inverse-muted: rgba(255, 255, 255, 0.6);
+  --hero-overlay: rgba(0, 0, 0, 0.95);
+  --card-shadow: rgba(212, 175, 55, 0.08);
+  --input-bg: #141414;
+  --ring: rgba(212, 175, 55, 0.4);
+  --glow: rgba(212, 175, 55, 0.12);
+  --mesh-1: rgba(212, 175, 55, 0.04);
+  --mesh-2: rgba(0, 0, 0, 0.98);
+  --gold-gradient: linear-gradient(135deg, #8a6628 0%, #d4af37 50%, #f9e498 80%, #d4af37 100%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-accent: var(--accent);
+  --color-charcoal: var(--charcoal);
+  --color-topbar-bg: var(--topbar-bg);
+  --color-topbar-text: var(--topbar-text);
+  --color-inverse-foreground: var(--inverse-foreground);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-input-bg: var(--input-bg);
   --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-playfair);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 0% 0%, var(--mesh-1), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, var(--mesh-1), transparent 45%),
+    linear-gradient(180deg, var(--mesh-2) 0%, var(--background) 35%);
   color: var(--foreground);
+  transition: background-color 0.5s ease, color 0.4s ease;
 }
 
 .font-serif {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-cormorant), Georgia, serif;
 }
 
+/* ─── Brand utilities ─── */
+.luxury-gradient {
+  background: linear-gradient(
+    160deg,
+    #000000 0%,
+    #0a0908 30%,
+    #141210 60%,
+    #000000 100%
+  );
+}
+
+.gold-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-dark) 15%,
+    var(--gold) 50%,
+    var(--gold-dark) 85%,
+    transparent
+  );
+  position: relative;
+}
+
+.gold-divider::after {
+  content: "◆";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8px;
+  color: var(--gold);
+  background: var(--background);
+  padding: 0 8px;
+  line-height: 1;
+}
+
+.section-dark .gold-divider::after,
+.luxury-gradient .gold-divider::after,
+footer .gold-divider::after {
+  background: var(--topbar-bg);
+}
+
+.luxury-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.luxury-card:hover {
+  border-color: color-mix(in srgb, var(--gold) 55%, var(--border));
+  box-shadow: 0 16px 40px -12px var(--card-shadow);
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid color-mix(in srgb, var(--gold) 15%, var(--border));
+}
+
+.dark .glass-panel {
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--gold) 20%, var(--border));
+}
+
+.section-alt {
+  background: var(--surface-muted);
+}
+
+.section-dark {
+  background: var(--topbar-bg);
+  color: var(--inverse-foreground);
+}
+
+.theme-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 4px var(--card-shadow);
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, var(--border));
+  border-radius: 0.75rem;
+  box-shadow: 0 24px 48px -20px var(--card-shadow);
+}
+
+.btn-gold {
+  background: var(--gold-gradient);
+  color: #000000;
+  font-weight: 600;
+  box-shadow: 0 4px 20px -4px rgba(212, 175, 55, 0.45);
+}
+
+.btn-gold:hover {
+  box-shadow: 0 8px 28px -4px rgba(212, 175, 55, 0.55);
+  filter: brightness(1.05);
+}
+
+/* ─── Animations ─── */
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes slide-in-from-top {
-  from { transform: translateY(-8px); opacity: 0; }
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
-.animate-in {
-  animation: fade-in 0.3s ease-out;
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
-.fade-in {
-  animation: fade-in 0.3s ease-out;
+@keyframes logo-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
+  50% { box-shadow: 0 0 50px rgba(212, 175, 55, 0.3); }
 }
 
-.slide-in-from-top-2 {
-  animation: slide-in-from-top 0.3s ease-out;
+.animate-in { animation: fade-in 0.5s ease-out; }
+.animate-slide-up { animation: slide-up 0.6s ease-out; }
+.logo-glow { animation: logo-glow 4s ease-in-out infinite; }
+
+.shimmer-gold {
+  background: linear-gradient(90deg, transparent, var(--glow), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f5f5f4;
-}
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--surface-muted); }
 ::-webkit-scrollbar-thumb {
-  background: #d6d3d1;
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold));
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a29e;
+
+::selection {
+  background: color-mix(in srgb, var(--gold) 30%, transparent);
+  color: var(--foreground);
+}
+
+/* ─── Smooth theme transitions ─── */
+header, footer, main, .luxury-card, .glass-panel, .theme-card, .auth-card {
+  transition: background-color 0.45s ease, border-color 0.45s ease, color 0.35s ease, box-shadow 0.45s ease;
 }

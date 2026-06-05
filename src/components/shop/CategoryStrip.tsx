@@ -1,45 +1,68 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { mergeCategoriesWithDb } from "@/lib/categories";
+import { PLACEHOLDER_IMAGE } from "@/lib/constants";
+import { getCategories } from "@/lib/db";
 
-const categories = [
-  { name: "Handbags", slug: "Handbags", emoji: "👜" },
-  { name: "Tote Bags", slug: "Tote Bags", emoji: "🛍️" },
-  { name: "Crossbody", slug: "Crossbody", emoji: "✨" },
-  { name: "Clutches", slug: "Clutches", emoji: "💎" },
-  { name: "Backpacks", slug: "Backpacks", emoji: "🎒" },
-];
+export default async function CategoryStrip() {
+  let categories = mergeCategoriesWithDb([]);
+  try {
+    const dbCategories = (await getCategories()) as {
+      name: string;
+      slug?: string;
+      image?: string;
+      description?: string;
+    }[];
+    categories = mergeCategoriesWithDb(dbCategories);
+  } catch {
+    // use static fallback
+  }
 
-export default function CategoryStrip() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-24 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-serif font-bold text-stone-900">
-            Shop by Category
+        <div className="text-center mb-16">
+          <p className="text-gold text-xs tracking-[0.4em] uppercase mb-3">Our Universe</p>
+          <h2 className="text-4xl lg:text-5xl font-serif font-light text-foreground">
+            Shop by <span className="font-semibold">Category</span>
           </h2>
-          <Link
-            href="/shop"
-            className="text-sm font-medium text-rose-900 flex items-center gap-1 hover:gap-2 transition-all"
-          >
-            View All <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
-              href={`/shop?category=${encodeURIComponent(cat.slug)}`}
-              className="group flex flex-col items-center p-6 bg-stone-50 rounded-2xl hover:bg-rose-50 border border-transparent hover:border-rose-100 transition-all duration-300"
+              href={`/shop?category=${encodeURIComponent(cat.name)}`}
+              className="group relative overflow-hidden aspect-[3/4] luxury-card"
             >
-              <span className="text-4xl mb-3 group-hover:scale-110 transition-transform">
-                {cat.emoji}
-              </span>
-              <span className="text-sm font-medium text-stone-700 group-hover:text-rose-900">
-                {cat.name}
-              </span>
+              <Image
+                src={cat.image || PLACEHOLDER_IMAGE}
+                alt={cat.name}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
+                <span className="text-2xl mb-2 block">{cat.emoji}</span>
+                <h3 className="text-white font-serif text-lg lg:text-xl font-medium">{cat.name}</h3>
+                <p className="text-white/60 text-xs mt-1 hidden sm:block">{cat.description}</p>
+                <span className="inline-flex items-center gap-1 text-gold text-xs mt-3 opacity-0 group-hover:opacity-100 transition-opacity tracking-widest uppercase">
+                  Shop <ArrowRight className="w-3 h-3" />
+                </span>
+              </div>
             </Link>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-foreground border-b border-gold pb-1 hover:text-accent transition-colors"
+          >
+            View All Products <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

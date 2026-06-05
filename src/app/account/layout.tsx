@@ -15,7 +15,7 @@ export default async function AccountLayout({
       <div className="grid lg:grid-cols-4 gap-8">
         <aside className="lg:col-span-1">
           <div className="sticky top-28">
-            <h2 className="text-lg font-semibold text-stone-900 mb-4 px-4">
+            <h2 className="text-lg font-semibold text-foreground mb-4 px-4">
               My Account
             </h2>
             <AccountNav />

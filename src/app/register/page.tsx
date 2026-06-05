@@ -4,8 +4,10 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import { BRAND } from "@/lib/brand";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -46,18 +48,19 @@ export default function RegisterPage() {
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-serif font-bold text-stone-900">
-            Join Hasi Fashion
+          <div className="relative w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden ring-1 ring-gold/30 shadow-lg shadow-gold/10">
+            <Image src={BRAND.logo} alt={BRAND.logoAlt} fill className="object-cover scale-110" />
+          </div>
+          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">{BRAND.tagline}</p>
+          <h1 className="text-3xl font-serif font-bold text-foreground">
+            Join {BRAND.name}
           </h1>
-          <p className="text-stone-500 mt-2">Create your account to start shopping</p>
+          <p className="text-muted mt-2">Create your account to start shopping</p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="p-8 bg-white rounded-2xl border border-stone-100 shadow-sm space-y-5"
-        >
+        <form onSubmit={handleSubmit} className="auth-card p-8 space-y-5">
           {error && (
-            <div className="p-3 bg-red-50 text-red-600 text-sm rounded-xl">
+            <div className="p-3 bg-red-500/10 text-red-500 text-sm rounded-xl border border-red-500/20">
               {error}
             </div>
           )}
@@ -94,12 +97,9 @@ export default function RegisterPage() {
             {loading ? "Creating account..." : "Create Account"}
           </Button>
 
-          <p className="text-center text-sm text-stone-500">
+          <p className="text-center text-sm text-muted">
             Already have an account?{" "}
-            <Link
-              href="/login"
-              className="text-rose-900 font-medium hover:underline"
-            >
+            <Link href="/login" className="text-accent font-medium hover:underline">
               Sign in
             </Link>
           </p>

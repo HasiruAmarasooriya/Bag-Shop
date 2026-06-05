@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SessionProvider from "@/components/providers/SessionProvider";
+import ThemeProvider from "@/components/providers/ThemeProvider";
+import ThemeScript from "@/components/providers/ThemeScript";
 import AnalyticsProvider from "@/components/providers/AnalyticsProvider";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -19,10 +22,23 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Hasi Fashion | Premium Handbags & Accessories",
+  title: "Hasi Fashion | Style That Speaks You",
   description:
-    "Discover elegant handbags, totes, crossbody bags and clutches at Hasi Fashion. Curated collection for the modern woman.",
-  keywords: ["handbags", "fashion", "bags", "accessories", "Sri Lanka"],
+    "Hasi Fashion — luxury clothes, bags, shoes, wall decor, artificial flowers and curated lifestyle pieces. Style that speaks you.",
+  keywords: [
+    "Hasi Fashion",
+    "luxury fashion",
+    "bags",
+    "clothes",
+    "shoes",
+    "home decor",
+    "artificial flowers",
+    "Sri Lanka",
+  ],
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -31,14 +47,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-sans antialiased">
-        <SessionProvider>
-          <AnalyticsProvider />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </SessionProvider>
+    <html lang="en" suppressHydrationWarning className={`${cormorant.variable} ${dmSans.variable} h-full`}>
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col font-sans antialiased bg-background text-foreground"
+      >
+        <ThemeScript />
+        <ThemeProvider>
+          <SessionProvider>
+            <AnalyticsProvider />
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </SessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

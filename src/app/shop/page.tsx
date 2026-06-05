@@ -38,14 +38,15 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="mb-10">
-        <h1 className="text-4xl font-serif font-bold text-stone-900">
+      <div className="mb-12">
+        <p className="text-gold text-xs tracking-[0.4em] uppercase mb-2">Curated Collection</p>
+        <h1 className="text-4xl lg:text-5xl font-serif font-light text-foreground">
           {params.category || params.search
             ? params.category || `Results for "${params.search}"`
             : "Shop All"}
         </h1>
-        <p className="text-stone-500 mt-2">
-          {products.length} product{products.length !== 1 ? "s" : ""} found
+        <p className="text-muted mt-3 text-sm">
+          {products.length} piece{products.length !== 1 ? "s" : ""} found
         </p>
       </div>
 

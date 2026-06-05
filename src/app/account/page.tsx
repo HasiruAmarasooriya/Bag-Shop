@@ -9,10 +9,10 @@ export default async function AccountDashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-serif font-bold text-stone-900">
+        <h1 className="text-3xl font-serif font-bold text-foreground">
           Hello, {session?.user?.name}!
         </h1>
-        <p className="text-stone-500 mt-1">
+        <p className="text-muted mt-1">
           Welcome to your Hasi Fashion account
         </p>
       </div>
@@ -41,20 +41,20 @@ export default async function AccountDashboard() {
           <Link
             key={card.href}
             href={card.href}
-            className="p-6 bg-white rounded-2xl border border-stone-100 hover:border-rose-200 hover:shadow-md transition-all group"
+            className="p-6 theme-card hover:border-gold/40 hover:shadow-md transition-all group"
           >
-            <card.icon className="w-8 h-8 text-rose-900 mb-3 group-hover:scale-110 transition-transform" />
-            <h3 className="font-semibold text-stone-900">{card.title}</h3>
-            <p className="text-sm text-stone-500 mt-1">{card.desc}</p>
+            <card.icon className="w-8 h-8 text-accent mb-3 group-hover:scale-110 transition-transform" />
+            <h3 className="font-semibold text-foreground">{card.title}</h3>
+            <p className="text-sm text-muted mt-1">{card.desc}</p>
           </Link>
         ))}
       </div>
 
-      <div className="p-6 bg-gradient-to-r from-rose-50 to-amber-50 rounded-2xl">
-        <h3 className="font-semibold text-stone-900 mb-2">
+      <div className="p-6 bg-gradient-to-r from-gold/10 to-accent/5 border border-gold/20 rounded-2xl">
+        <h3 className="font-semibold text-foreground mb-2">
           Looking for something new?
         </h3>
-        <p className="text-sm text-stone-600 mb-4">
+        <p className="text-sm text-muted mb-4">
           Check out our latest featured collection.
         </p>
         <Link href="/shop?featured=true">

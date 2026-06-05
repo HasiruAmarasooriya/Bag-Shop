@@ -18,12 +18,12 @@ export default function WishlistPage() {
   }, []);
 
   if (loading) {
-    return <div className="text-center py-12 text-stone-500">Loading...</div>;
+    return <div className="text-center py-12 text-muted">Loading...</div>;
   }
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-serif font-bold text-stone-900">My Wishlist</h1>
+      <h1 className="text-2xl font-serif font-bold text-foreground">My Wishlist</h1>
       <ProductGrid
         products={products}
         emptyMessage="Your wishlist is empty. Start adding your favorites!"

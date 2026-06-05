@@ -16,12 +16,12 @@ export default function EditProductPage() {
   }, [id]);
 
   if (!product) {
-    return <div className="text-center py-12 text-stone-400">Loading...</div>;
+    return <div className="text-center py-12 text-muted">Loading...</div>;
   }
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-serif font-bold text-stone-900">
+      <h1 className="text-2xl font-serif font-bold text-foreground">
         Edit Product
       </h1>
       <ProductForm product={product} />

@@ -8,6 +8,7 @@ import {
   ShoppingCart,
   Users,
   Tags,
+  ImageIcon,
   ArrowLeft,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ const links = [
   { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
   { href: "/admin/users", label: "Users", icon: Users },
   { href: "/admin/categories", label: "Categories", icon: Tags },
+  { href: "/admin/gallery", label: "Gallery", icon: ImageIcon },
 ];
 
 export default function AdminNav() {
@@ -27,7 +29,7 @@ export default function AdminNav() {
     <nav className="space-y-1">
       <Link
         href="/"
-        className="flex items-center gap-2 px-4 py-3 text-sm text-stone-500 hover:text-rose-900 mb-4"
+        className="flex items-center gap-2 px-4 py-3 text-sm text-muted hover:text-accent mb-4 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" /> Back to Store
       </Link>
@@ -41,10 +43,10 @@ export default function AdminNav() {
             key={link.href}
             href={link.href}
             className={cn(
-              "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors",
+              "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300",
               isActive
-                ? "bg-rose-900 text-white"
-                : "text-stone-600 hover:bg-stone-100"
+                ? "bg-gradient-to-r from-gold-dark to-gold text-charcoal shadow-md shadow-gold/20"
+                : "text-muted hover:bg-surface-muted hover:text-foreground"
             )}
           >
             <link.icon className="w-4 h-4" />

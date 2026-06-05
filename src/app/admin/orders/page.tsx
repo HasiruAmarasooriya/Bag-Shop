@@ -36,15 +36,15 @@ export default function AdminOrdersPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-serif font-bold text-stone-900">Orders</h1>
+      <h1 className="text-2xl font-serif font-bold text-foreground">Orders</h1>
 
-      <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden">
+      <div className="theme-card overflow-hidden">
         {loading ? (
-          <p className="p-8 text-center text-stone-400">Loading...</p>
+          <p className="p-8 text-center text-muted">Loading...</p>
         ) : orders.length === 0 ? (
-          <p className="p-8 text-center text-stone-400">No orders yet</p>
+          <p className="p-8 text-center text-muted">No orders yet</p>
         ) : (
-          <div className="divide-y divide-stone-50">
+          <div className="divide-y divide-border">
             {orders.map((order) => (
               <div key={order._id} className="p-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
@@ -52,7 +52,7 @@ export default function AdminOrdersPage() {
                     <p className="font-mono text-sm">
                       #{order._id.slice(-8).toUpperCase()}
                     </p>
-                    <p className="text-sm text-stone-500">
+                    <p className="text-sm text-muted">
                       {(order as { userId?: { name?: string; email?: string } })
                         .userId?.name || "Customer"}{" "}
                       ·{" "}
@@ -60,14 +60,14 @@ export default function AdminOrdersPage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="font-semibold text-rose-900">
+                    <span className="font-semibold text-accent">
                       {formatPrice(order.total)}
                     </span>
                     <Badge>{order.status}</Badge>
                   </div>
                 </div>
 
-                <div className="text-sm text-stone-600 mb-4">
+                <div className="text-sm text-muted mb-4">
                   {order.items.map((item, i) => (
                     <span key={i}>
                       {item.name} × {item.quantity}

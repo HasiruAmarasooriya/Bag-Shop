@@ -67,12 +67,12 @@ export default function ProfilePage() {
   };
 
   if (loading) {
-    return <div className="text-center py-12 text-stone-500">Loading...</div>;
+    return <div className="text-center py-12 text-muted">Loading...</div>;
   }
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-serif font-bold text-stone-900">Profile Settings</h1>
+      <h1 className="text-2xl font-serif font-bold text-foreground">Profile Settings</h1>
 
       <form onSubmit={handleSave} className="space-y-6">
         {message && (
@@ -81,7 +81,7 @@ export default function ProfilePage() {
           </div>
         )}
 
-        <div className="p-6 bg-white rounded-2xl border border-stone-100 space-y-4">
+        <div className="p-6 theme-card space-y-4">
           <h2 className="font-semibold">Personal Information</h2>
           <Input
             label="Full Name"
@@ -98,7 +98,7 @@ export default function ProfilePage() {
           />
         </div>
 
-        <div className="p-6 bg-white rounded-2xl border border-stone-100 space-y-4">
+        <div className="p-6 theme-card space-y-4">
           <h2 className="font-semibold">Default Shipping Address</h2>
           <Input
             label="Full Name"

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
+import { getDisplayImageSrc } from "@/lib/constants";
 import type { Product } from "@/types";
 
 export default function AdminProductsPage() {
@@ -34,7 +35,7 @@ export default function AdminProductsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-serif font-bold text-stone-900">Products</h1>
+        <h1 className="text-2xl font-serif font-bold text-foreground">Products</h1>
         <Link href="/admin/products/new">
           <Button className="gap-2">
             <Plus className="w-4 h-4" /> Add Product
@@ -42,12 +43,12 @@ export default function AdminProductsPage() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden">
+      <div className="theme-card overflow-hidden">
         {loading ? (
-          <p className="p-8 text-center text-stone-400">Loading...</p>
+          <p className="p-8 text-center text-muted">Loading...</p>
         ) : products.length === 0 ? (
           <div className="p-8 text-center">
-            <p className="text-stone-400 mb-4">No products yet</p>
+            <p className="text-muted mb-4">No products yet</p>
             <Link href="/admin/products/new">
               <Button>Add First Product</Button>
             </Link>
@@ -55,33 +56,33 @@ export default function AdminProductsPage() {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-stone-50">
+              <thead className="bg-surface-muted">
                 <tr>
-                  <th className="text-left px-6 py-3 font-medium text-stone-500">
+                  <th className="text-left px-6 py-3 font-medium text-muted">
                     Product
                   </th>
-                  <th className="text-left px-6 py-3 font-medium text-stone-500">
+                  <th className="text-left px-6 py-3 font-medium text-muted">
                     Category
                   </th>
-                  <th className="text-left px-6 py-3 font-medium text-stone-500">
+                  <th className="text-left px-6 py-3 font-medium text-muted">
                     Price
                   </th>
-                  <th className="text-left px-6 py-3 font-medium text-stone-500">
+                  <th className="text-left px-6 py-3 font-medium text-muted">
                     Stock
                   </th>
-                  <th className="text-right px-6 py-3 font-medium text-stone-500">
+                  <th className="text-right px-6 py-3 font-medium text-muted">
                     Actions
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {products.map((product) => (
-                  <tr key={product._id} className="border-t border-stone-50">
+                  <tr key={product._id} className="border-t border-border">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-stone-50">
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-surface-muted">
                           <Image
-                            src={product.images[0] || ""}
+                            src={getDisplayImageSrc(product.images[0])}
                             alt={product.name}
                             fill
                             className="object-cover"
@@ -90,7 +91,7 @@ export default function AdminProductsPage() {
                         <span className="font-medium">{product.name}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-stone-500">
+                    <td className="px-6 py-4 text-muted">
                       {product.category}
                     </td>
                     <td className="px-6 py-4 font-medium">
@@ -99,7 +100,7 @@ export default function AdminProductsPage() {
                     <td className="px-6 py-4">
                       <span
                         className={
-                          product.stock <= 5 ? "text-red-500" : "text-stone-600"
+                          product.stock <= 5 ? "text-red-500" : "text-muted"
                         }
                       >
                         {product.stock}
@@ -108,13 +109,13 @@ export default function AdminProductsPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-end gap-2">
                         <Link href={`/admin/products/${product._id}/edit`}>
-                          <button className="p-2 text-stone-400 hover:text-rose-900">
+                          <button className="p-2 text-muted hover:text-accent">
                             <Pencil className="w-4 h-4" />
                           </button>
                         </Link>
                         <button
                           onClick={() => handleDelete(product._id)}
-                          className="p-2 text-stone-400 hover:text-red-500"
+                          className="p-2 text-muted hover:text-red-500"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>

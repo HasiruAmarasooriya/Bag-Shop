@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#faf9f6"/>
+  <rect x="1" y="1" width="398" height="498" fill="none" stroke="#e5e0d6" stroke-width="2"/>
+  <circle cx="200" cy="210" r="48" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.5"/>
+  <path d="M130 340 L200 260 L270 300 L330 220" fill="none" stroke="#8a6628" stroke-width="1.5" opacity="0.4"/>
+  <text x="200" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#8a6628" opacity="0.6">Upload Image</text>
+</svg>

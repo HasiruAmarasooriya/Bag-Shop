@@ -4,19 +4,16 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import ImageUpload from "@/components/admin/ImageUpload";
+import { CATEGORY_NAMES } from "@/lib/categories";
+import { isLocalImage } from "@/lib/constants";
 import type { Product } from "@/types";
 
 interface ProductFormProps {
   product?: Product;
 }
 
-const categories = [
-  "Handbags",
-  "Tote Bags",
-  "Crossbody",
-  "Clutches",
-  "Backpacks",
-];
+const categories = CATEGORY_NAMES;
 
 export default function ProductForm({ product }: ProductFormProps) {
   const router = useRouter();
@@ -26,7 +23,7 @@ export default function ProductForm({ product }: ProductFormProps) {
     description: product?.description || "",
     price: product?.price?.toString() || "",
     comparePrice: product?.comparePrice?.toString() || "",
-    images: product?.images?.join("\n") || "",
+    images: product?.images || [],
     category: product?.category || categories[0],
     tags: product?.tags?.join(", ") || "",
     stock: product?.stock?.toString() || "0",
@@ -46,7 +43,7 @@ export default function ProductForm({ product }: ProductFormProps) {
       comparePrice: form.comparePrice
         ? parseFloat(form.comparePrice)
         : undefined,
-      images: form.images.split("\n").filter(Boolean),
+      images: form.images.filter(isLocalImage),
       category: form.category,
       tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
       stock: parseInt(form.stock),
@@ -77,7 +74,7 @@ export default function ProductForm({ product }: ProductFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="p-6 bg-white rounded-2xl border border-stone-100 space-y-4">
+      <div className="p-6 theme-card space-y-4">
         <Input
           label="Product Name"
           required
@@ -85,7 +82,7 @@ export default function ProductForm({ product }: ProductFormProps) {
           onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
         <div>
-          <label className="block text-sm font-medium text-stone-700 mb-1.5">
+          <label className="block text-sm font-medium text-foreground mb-1.5">
             Description
           </label>
           <textarea
@@ -95,7 +92,7 @@ export default function ProductForm({ product }: ProductFormProps) {
             onChange={(e) =>
               setForm({ ...form, description: e.target.value })
             }
-            className="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-500/30"
+            className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-bg text-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold"
           />
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
@@ -117,7 +114,7 @@ export default function ProductForm({ product }: ProductFormProps) {
         </div>
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-1.5">
+            <label className="block text-sm font-medium text-foreground mb-1.5">
               Category
             </label>
             <select
@@ -125,7 +122,7 @@ export default function ProductForm({ product }: ProductFormProps) {
               onChange={(e) =>
                 setForm({ ...form, category: e.target.value })
               }
-              className="w-full px-4 py-2.5 rounded-xl border border-stone-200"
+              className="w-full px-4 py-2.5 rounded-xl border border-border bg-input-bg text-foreground"
             >
               {categories.map((c) => (
                 <option key={c} value={c}>
@@ -141,18 +138,12 @@ export default function ProductForm({ product }: ProductFormProps) {
             onChange={(e) => setForm({ ...form, stock: e.target.value })}
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-stone-700 mb-1.5">
-            Image URLs (one per line)
-          </label>
-          <textarea
-            rows={3}
-            value={form.images}
-            onChange={(e) => setForm({ ...form, images: e.target.value })}
-            placeholder="https://images.unsplash.com/..."
-            className="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-rose-500/30"
-          />
-        </div>
+        <ImageUpload
+          value={form.images}
+          onChange={(images) => setForm({ ...form, images })}
+          folder="products"
+          maxImages={6}
+        />
         <Input
           label="Colors (comma separated)"
           value={form.colors}
@@ -177,9 +168,9 @@ export default function ProductForm({ product }: ProductFormProps) {
             onChange={(e) =>
               setForm({ ...form, featured: e.target.checked })
             }
-            className="rounded text-rose-900"
+            className="rounded text-accent"
           />
-          <span className="text-sm font-medium text-stone-700">
+          <span className="text-sm font-medium text-foreground">
             Featured Product
           </span>
         </label>
